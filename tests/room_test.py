@@ -7,6 +7,7 @@ class TestRoom(unittest.TestCase):
     
     def setUp(self):
         self.room = Room("Utahime", 100, "Karaoke Bar")
+
         self.guest_1 = Guest("Akira Nishikiyama", 200)
         self.guest_2 = Guest("Goro Majima", 300)
     
@@ -21,3 +22,14 @@ class TestRoom(unittest.TestCase):
 
     def test_room_has_guest_list(self):
         self.assertEqual(0, self.room.guest_list())
+
+    def test_check_in_guest(self):
+        self.room.check_in_guest(self.guest_1)
+        self.room.check_in_guest(self.guest_2)
+        self.assertEqual(2, self.room.guest_list())
+
+    def test_check_out_guest(self):
+        self.room.check_in_guest(self.guest_1)
+        self.room.check_in_guest(self.guest_2)
+        self.room.check_out_guest(self.guest_1)
+        self.assertEqual(1, self.room.guest_list())
