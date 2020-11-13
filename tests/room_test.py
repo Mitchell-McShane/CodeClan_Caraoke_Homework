@@ -28,11 +28,21 @@ class TestRoom(unittest.TestCase):
         self.room.check_in_guest(self.guest_2)
         self.assertEqual(2, self.room.guest_list())
 
+    def test_check_in_group(self):
+        group = [self.guest_1, self.guest_2]
+        self.room.check_in_group(group)
+        self.assertEqual(2, self.room.guest_list())
+
     def test_check_out_guest(self):
         self.room.check_in_guest(self.guest_1)
         self.room.check_in_guest(self.guest_2)
         self.room.check_out_guest(self.guest_1)
         self.assertEqual(1, self.room.guest_list())
+
+    def test_check_out_group(self):
+        group = [self.guest_1, self.guest_2]
+        self.room.check_out_group(group)
+        self.assertEqual(0, self.room.guest_list())
 
     def test_song_in_the_list(self):
         self.assertEqual(0, self.room.song_list())
