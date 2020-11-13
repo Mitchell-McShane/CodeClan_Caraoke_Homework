@@ -33,3 +33,11 @@ class TestRoom(unittest.TestCase):
         self.room.check_in_guest(self.guest_2)
         self.room.check_out_guest(self.guest_1)
         self.assertEqual(1, self.room.guest_list())
+
+    def test_song_in_the_list(self):
+        self.assertEqual(0, self.room.song_list())
+
+    def test_add_song_in_the_list(self):
+        song_1 = Song("Bakamitai", "Yakuza 0")
+        self.room.add_song_in_the_list(song_1)
+        self.assertEqual(1, self.room.song_list())
